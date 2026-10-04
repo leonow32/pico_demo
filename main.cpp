@@ -5,6 +5,7 @@
 #if COMPONENT_UCOSMOS
     #include "uCosmos/uCosmos.h"
     #include "uCosmos/console.h"
+    #include "uCosmos/log.h"
 #endif
 
 /*
@@ -30,6 +31,11 @@ int main() {
     // ========================================
 	// Main loop
 	// ========================================
+
+    LOGE("error %u", 123);
+    LOGW("warning %s", "to jest jakiś string");
+    LOGD("debug");
+    LOGI("info %s", __func__);
 	
     task_scheduler();
 
