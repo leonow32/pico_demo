@@ -478,7 +478,7 @@ const console::command_struct console::command_list[] = {
 	{"~`~",						task_monitor_cmd},
 #endif
 
-#if OS_USE_TIME_COMMAND && OS_USE_TIME
+#if OS_USE_TIME_COMMAND
 	{"time",					time_print_cmd},
 #endif	
 
