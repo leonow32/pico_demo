@@ -21,10 +21,6 @@
 	#include "cipher_sbox/sbox_demo.h"
 #endif
 
-#if COMPONENT_CONSOLE
-	#include "uCosmos/console_demo.h"
-#endif
-
 #if COMPONENT_CRC
 	#include "crc/crc_demo.h"
 #endif
@@ -172,37 +168,63 @@
 #endif
 
 #if COMPONENT_UCOSMOS
-	#include "uCosmos/uCosmos_commands.h"
+	#include "uCosmos/commands.h"
 #endif
 
 // ========================================
 // Command names and function pointers
 // ========================================
 
-const console::command_struct console::command_list[] = {
+const command_struct command_list[] = {
 
 // ========================================
-// Console
+// System uCosmos
 // ========================================
 
-#if CONSOLE_USE_COMMAND_ALL
-	{"?",				console::all_commands_cmd},
+#if USE_CMD_TASK_MONITOR
+	{"`",						task_monitor_cmd},
+	{"~`~",						task_monitor_cmd},
 #endif
 
-#if CONSOLE_USE_DEMO_COMMANDS
-	{"args",			console::args_cmd},
-	{"echo",			console::echo_cmd},
-	{"hex8",			console::hex8_cmd},
-	{"hex16",			console::hex16_cmd},
-	{"hex32",			console::hex32_cmd},
-	{"dec8",			console::dec8_cmd},
-	{"dec16",			console::dec16_cmd},
-	{"dec16s",			console::dec16s_cmd},
-	{"dec32",			console::dec32_cmd},
-	{"dec32s",			console::dec32s_cmd},
-	{"hexstr",			console::hexstr_cmd},
-	{"ascstr",			console::ascstr_cmd},
-	{"ascchr",			console::ascchr_cmd},
+#if USE_CMD_TIME
+	{"time",					time_print_cmd},
+#endif	
+
+#if USE_CMD_TASK_COMMANDS
+	{"add",						task_add_cmd},
+	{"close",					task_close_cmd},
+	{"per",						task_period_change_cmd},
+	{"exe",						task_exe_cmd},
+#endif
+
+	{"reset",					reset_cmd},
+	{"mem",						memory_status_cmd},
+
+#if USE_CMD_TASK_DEMO
+	{"demo1_add",				demo1_add_cmd},
+	{"demo2_add",				demo2_add_cmd},
+	{"demo1_cls",				demo1_cls_cmd},
+	{"demo2_cls",				demo2_cls_cmd},
+#endif
+
+#if USE_CMD_ALL
+	{"?",						all_commands_cmd},
+#endif
+
+#if USE_CMD_PARSE_DEMO
+	{"args",					args_cmd},
+	{"echo",					echo_cmd},
+	{"hex8",					hex8_cmd},
+	{"hex16",					hex16_cmd},
+	{"hex32",					hex32_cmd},
+	{"dec8",					dec8_cmd},
+	{"dec16",					dec16_cmd},
+	{"dec16s",					dec16s_cmd},
+	{"dec32",					dec32_cmd},
+	{"dec32s",					dec32s_cmd},
+	{"hexstr",					hexstr_cmd},
+	{"ascstr",					ascstr_cmd},
+	{"ascchr",					ascchr_cmd},
 #endif
 
 // ========================================
@@ -467,36 +489,6 @@ const console::command_struct console::command_list[] = {
 	{"spi_t",					SPI::CmdTransmit},
 	{"spi_r",					SPI::CmdRead},
 	{"spi_w",					SPI::CmdWrite},
-#endif
-
-// ========================================
-// System AVR uCosmos
-// ========================================
-
-#if OS_USE_TASK_MONITOR
-	{"`",						task_monitor_cmd},
-	{"~`~",						task_monitor_cmd},
-#endif
-
-#if OS_USE_TIME_COMMAND
-	{"time",					time_print_cmd},
-#endif	
-
-#if OS_USE_TASK_COMMANDS
-	{"add",						task_add_cmd},
-	{"close",					task_close_cmd},
-	{"per",						task_period_change_cmd},
-	{"exe",						task_exe_cmd},
-#endif
-
-	{"reset",					reset_cmd},
-	{"mem",						memory_status_cmd},
-
-#if OS_USE_DEMO_TASKS
-	{"demo1_add",				demo1_add_cmd},
-	{"demo2_add",				demo2_add_cmd},
-	{"demo1_cls",				demo1_cls_cmd},
-	{"demo2_cls",				demo2_cls_cmd},
 #endif
 
 // ========================================

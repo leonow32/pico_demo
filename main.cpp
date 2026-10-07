@@ -1,20 +1,9 @@
-#include <stdio.h>
-#include "pico/stdlib.h"
 #include "config.h"
 
 #if COMPONENT_UCOSMOS
     #include "uCosmos/uCosmos.h"
     #include "uCosmos/console.h"
-    #include "uCosmos/log.h"
 #endif
-
-/*
-#if ESP_PLATFORM
-
-#elif PICO_RP2040 || PICO_RP2350
-	
-#endif
-*/
 
 int main() {
     stdio_init_all();
@@ -25,19 +14,12 @@ int main() {
     #endif
 
     #if COMPONENT_CONSOLE
-        console::init();
+        console_init();
     #endif
 
     // ========================================
 	// Main loop
 	// ========================================
-
-    LOGE("error %u", 123);
-    LOGW("warning %s", "to jest jakiś string");
-    LOGD("debug");
-    LOGI("info %s", __func__);
 	
     task_scheduler();
-
-    printf("You should not be here\n");
 }

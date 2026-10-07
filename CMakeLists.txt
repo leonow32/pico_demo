@@ -38,10 +38,9 @@ pico_sdk_init()
 add_executable(rp_ucosmos 
     "main.cpp" 
 
+    "uCosmos/commands.cpp"
     "uCosmos/console.cpp"
-    "uCosmos/console_demo.cpp"
     "uCosmos/uCosmos.cpp"
-    "uCosmos/uCosmos_commands.cpp"
 )
 
 pico_set_program_name(rp_ucosmos "rp_ucosmos")
