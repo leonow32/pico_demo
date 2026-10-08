@@ -214,13 +214,13 @@ const command_struct command_list[] = {
 #if USE_CMD_PARSE_DEMO
 	{"args",					args_cmd},
 	{"echo",					echo_cmd},
-	{"hex8",					hex8_cmd},
-	{"hex16",					hex16_cmd},
-	{"hex32",					hex32_cmd},
-	{"dec8",					dec8_cmd},
-	{"dec16",					dec16_cmd},
+	// {"hex8",					hex8_cmd},
+	// {"hex16",					hex16_cmd},
+	// {"hex32",					hex32_cmd},
+	// {"dec8",					dec8_cmd},
+	// {"dec16",					dec16_cmd},
 	{"dec16s",					dec16s_cmd},
-	{"dec32",					dec32_cmd},
+	// {"dec32",					dec32_cmd},
 	{"dec32s",					dec32s_cmd},
 	{"hexstr",					hexstr_cmd},
 	{"ascstr",					ascstr_cmd},
@@ -230,6 +230,12 @@ const command_struct command_list[] = {
 	{"nhex16",					new_hex16_cmd},
 	{"nhex32",					new_hex32_cmd},
 	{"nhex64",					new_hex64_cmd},
+	{"ndec8",					new_dec8_cmd},
+	{"ndec16",					new_dec16_cmd},
+	{"ndec32",					new_dec32_cmd},
+	{"ndec64",					new_dec64_cmd},
+	{"nnum",					new_numeric_cmd},
+
 #endif
 
 // ========================================
