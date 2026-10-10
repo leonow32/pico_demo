@@ -222,7 +222,7 @@ const command_struct command_list[] = {
 	// {"dec16s",					dec16s_cmd},
 	// {"dec32",					dec32_cmd},
 	// {"dec32s",					dec32s_cmd},
-	{"hexstr",					hexstr_cmd},
+	// {"hexstr",					hexstr_cmd},
 	{"ascstr",					ascstr_cmd},
 	{"ascchr",					ascchr_cmd},
 
@@ -240,6 +240,8 @@ const command_struct command_list[] = {
 	{"int16",					new_int16_cmd},
 	{"int32",					new_int32_cmd},
 	{"int64",					new_int64_cmd},
+
+	{"nhexstr",					new_hexstr_cmd},
 
 #endif
 
