@@ -234,6 +234,7 @@ const command_struct command_list[] = {
 	{"ascchr",					ascchr_cmd},
 	{"ascstr",					ascstr_cmd},
 	{"nhexstr",					new_hexstr_cmd},
+	{"ntime",					new_time_cmd},
 #endif
 
 // ========================================
