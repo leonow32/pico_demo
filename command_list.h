@@ -215,26 +215,26 @@ const command_struct command_list[] = {
 	{"args",					args_cmd},
 	{"echo",					echo_cmd},
 
-	{"hex8",					new_hex8_cmd},
-	{"hex16",					new_hex16_cmd},
-	{"hex32",					new_hex32_cmd},
-	{"hex64",					new_hex64_cmd},
+	{"hex8",					hex8_cmd},
+	{"hex16",					hex16_cmd},
+	{"hex32",					hex32_cmd},
+	{"hex64",					hex64_cmd},
 
-	{"dec8",					new_dec8_cmd},
-	{"dec16",					new_dec16_cmd},
-	{"dec32",					new_dec32_cmd},
-	{"dec64",					new_dec64_cmd},
-	{"anybase",					new_numeric_cmd},
+	{"uint88",					uint8_cmd},
+	{"uint16",					uint16_cmd},
+	{"uint32",					uint32_cmd},
+	{"uint64",					uint64_cmd},
+	{"anybase",					numeric_cmd},
 
-	{"int8",					new_int8_cmd},
-	{"int16",					new_int16_cmd},
-	{"int32",					new_int32_cmd},
-	{"int64",					new_int64_cmd},
+	{"int8",					int8_cmd},
+	{"int16",					int16_cmd},
+	{"int32",					int32_cmd},
+	{"int64",					int64_cmd},
 
 	{"ascchr",					ascchr_cmd},
 	{"ascstr",					ascstr_cmd},
-	{"nhexstr",					new_hexstr_cmd},
-	{"ntime",					new_time_cmd},
+	{"hexstr",					hexstr_cmd},
+	{"ptime",					time_demo_cmd},
 #endif
 
 // ========================================
