@@ -220,7 +220,7 @@ const command_struct command_list[] = {
 	{"hex32",					hex32_cmd},
 	{"hex64",					hex64_cmd},
 
-	{"uint88",					uint8_cmd},
+	{"uint8",					uint8_cmd},
 	{"uint16",					uint16_cmd},
 	{"uint32",					uint32_cmd},
 	{"uint64",					uint64_cmd},
@@ -235,6 +235,11 @@ const command_struct command_list[] = {
 	{"ascstr",					ascstr_cmd},
 	{"hexstr",					hexstr_cmd},
 	{"ptime",					time_demo_cmd},
+
+	{"wrong1",					wrong1_cmd},
+	{"wrong2",					wrong2_cmd},
+	{"wrong3",					wrong3_cmd},
+	{"wrong4",					wrong4_cmd},
 #endif
 
 // ========================================
