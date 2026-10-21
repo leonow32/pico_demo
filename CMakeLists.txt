@@ -38,8 +38,19 @@ pico_sdk_init()
 add_executable(rp_ucosmos 
     "main.cpp" 
 
+    "cipher_aes128/aes128_cbc_soft.cpp"
+    "cipher_aes128/aes128_ecb_soft.cpp"
+    "cipher_aes128/aes128_demo.cpp"
+    
+    "cipher_sbox/sbox.cpp"
+    "cipher_sbox/sbox_demo.cpp"
+    
+    "crc/crc.cpp"
+    "crc/crc_demo.cpp"
+
     "uCosmos/commands.cpp"
     "uCosmos/console.cpp"
+    "uCosmos/task.cpp"
     "uCosmos/uCosmos.cpp"
 )
 
@@ -52,17 +63,18 @@ pico_enable_stdio_usb(rp_ucosmos 1)
 
 # Add the standard library to the build
 target_link_libraries(rp_ucosmos
-        pico_stdlib)
+     pico_stdlib
+)
 
 # Add the standard include files to the build
 target_include_directories(rp_ucosmos PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_CURRENT_LIST_DIR}
 )
 
 # Add any user requested libraries
 target_link_libraries(rp_ucosmos 
-        hardware_timer
-        )
+    hardware_timer
+)
 
 pico_add_extra_outputs(rp_ucosmos)
 

@@ -1,3 +1,12 @@
 [submodule "uCosmos"]
 	path = uCosmos
 	url = git@github.com:leonow32/uCosmos.git
+[submodule "crc"]
+	path = crc
+	url = git@github.com:leonow32/crc.git
+[submodule "cipher_sbox"]
+	path = cipher_sbox
+	url = git@github.com:leonow32/cipher_sbox.git
+[submodule "cipher_aes128"]
+	path = cipher_aes128
+	url = git@github.com:leonow32/cipher_aes128.git
