@@ -1,106 +1,48 @@
-import threading
-import time
-import serial
 import msvcrt
 import sys
+import time
+import serial
 
-DEFAULT_PORT = "COM16"
+running = True
+port_name = sys.argv[1] if len(sys.argv) > 1 else "COM16"
+is_connected = False
 
-class SerialTerminal:
-    def __init__(self, port):
-        self.port_name = port
-        self.ser       = None
-        self.running   = True
-        self.lock = threading.Lock()
+while running:
+    try:
+        with serial.Serial(port_name, 115200, timeout=0.1) as port:
+            print(f"=== Port {port_name} otwarty")
+            is_connected = True
 
-    def connect(self):
-        while self.running:
-            try:
-                ser = serial.Serial(port=self.port_name, baudrate=115200, timeout=0.01)
+            while running:
+                if port.in_waiting > 0:
+                    data = port.read(port.in_waiting)
+                    try:
+                        sys.stdout.write(data.decode("utf-8", errors="replace"))
+                        sys.stdout.flush()
+                    except Exception:
+                        pass
 
-                with self.lock:
-                    self.ser = ser
+                if msvcrt.kbhit():
+                    char = msvcrt.getch()
 
-                print(f"=== Połączono z {self.port_name} ===")
-                return
+                    if char == b"\x11":  # CTRL-Q zamyka program
+                        running = False
+                        break
+                    try:
+                        port.write(char)
+                    except serial.SerialException:
+                        break
 
-            except serial.SerialException:
-                time.sleep(0.01)
+                time.sleep(0.005)
 
-    def close_port(self):
-        with self.lock:
-            if self.ser is not None:
-                try:
-                    self.ser.close()
-                except Exception:
-                    pass
-                self.ser = None
+    except (serial.SerialException, OSError):
+        if not running:
+            break
 
-    def get_serial(self):
-        with self.lock:
-            return self.ser
+        if is_connected:
+            print(f"=== Port {port_name} zamknięty")
+            is_connected = False 
 
-    def rx_thread(self):
-        while self.running:
-            ser = self.get_serial()
+        time.sleep(0.01)
 
-            if ser is None:
-                self.connect()
-                continue
-
-            try:
-                data = ser.read(1024)
-
-                if data:
-                    print(data.decode("utf-8", errors="replace"), end="", flush=True)
-
-            except (serial.SerialException, OSError):
-                print("\n=== Port rozłączony ===")
-                self.close_port()
-
-    def tx_thread(self):
-        while self.running:
-            try:
-                ch = msvcrt.getch()
-
-            except(KeyboardInterrupt, EOFError):
-                self.running = False
-                break
-                
-            if ch == b'\x11':      # Ctrl+Q
-                print("=== Koniec programu")
-                self.running = False
-                break
-
-            ser = self.get_serial()
-
-            if ser is None:
-                continue
-
-            try:
-                ser.write(ch)
-
-            except (serial.SerialException, OSError):
-                print("=== Błąd zapisu")
-                self.close_port()
-
-    def run(self):
-        rx = threading.Thread(target=self.rx_thread, daemon=True)
-        rx.start()
-
-        try:
-            self.tx_thread()
-
-        finally:
-            self.running = False
-            self.close_port()
-
-if __name__ == "__main__":
-    
-    if len(sys.argv) > 1:
-        port = sys.argv[1]
-    else:
-        port = DEFAULT_PORT
-    
-    term = SerialTerminal(port)
-    term.run()
+print("=== Koniec")
