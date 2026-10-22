@@ -2,14 +2,13 @@ import threading
 import time
 import serial
 import msvcrt
+import sys
 
-PORT     = "COM16"
-BAUDRATE = 115200
+DEFAULT_PORT = "COM16"
 
 class SerialTerminal:
-    def __init__(self, port, baudrate):
+    def __init__(self, port):
         self.port_name = port
-        self.baudrate  = baudrate
         self.ser       = None
         self.running   = True
         self.lock = threading.Lock()
@@ -17,7 +16,7 @@ class SerialTerminal:
     def connect(self):
         while self.running:
             try:
-                ser = serial.Serial(port=self.port_name, baudrate=self.baudrate, timeout=0.01)
+                ser = serial.Serial(port=self.port_name, baudrate=115200, timeout=0.01)
 
                 with self.lock:
                     self.ser = ser
@@ -64,7 +63,7 @@ class SerialTerminal:
             try:
                 ch = msvcrt.getch()
 
-            except (KeyboardInterrupt, EOFError):
+            except(KeyboardInterrupt, EOFError):
                 self.running = False
                 break
                 
@@ -97,5 +96,11 @@ class SerialTerminal:
             self.close_port()
 
 if __name__ == "__main__":
-    term = SerialTerminal(PORT, BAUDRATE)
+    
+    if len(sys.argv) > 1:
+        port = sys.argv[1]
+    else:
+        port = DEFAULT_PORT
+    
+    term = SerialTerminal(port)
     term.run()
