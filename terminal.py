@@ -36,6 +36,13 @@ while running:
                 time.sleep(0.005)
 
     except (serial.SerialException, OSError):
+        if msvcrt.kbhit():
+            char = msvcrt.getch()
+
+            if msvcrt.getch() == b"\x11":  # CTRL-Q zamyka program
+                running = False
+                break
+
         if not running:
             break
 
