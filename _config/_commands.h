@@ -1,4 +1,4 @@
-#include "config.h"
+#include "_config/_config.h"
 #ifndef INTERPRETER_COMMANDS_H_
 #define INTERPRETER_COMMANDS_H_
 

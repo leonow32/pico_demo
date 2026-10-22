@@ -1,4 +1,4 @@
-#include "config.h"
+#include "_config/_config.h"
 #include "uCosmos/uCosmos.h"
 
 #if COMPONENT_CIPHER_AES128
