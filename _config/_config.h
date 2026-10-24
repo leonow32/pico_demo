@@ -6,4 +6,5 @@
 	#define COMPONENT_CRC					1
 	#define COMPONENT_CIPHER_AES128			1
 	#define COMPONENT_CIPHER_SBOX			1
+	#define COMPONENT_TOOLS_RP				1
 #endif

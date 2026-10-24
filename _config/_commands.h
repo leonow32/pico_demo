@@ -21,6 +21,10 @@
 	#include "crc/crc_demo.h"
 #endif
 
+#if COMPONENT_TOOLS_RP
+	#include "tools_rp/tools_rp.h"
+#endif
+
 // ========================================
 // Command names and function pointers
 // ========================================
@@ -114,7 +118,7 @@ const command_struct command_list[] = {
 #endif
 
 // ========================================
-// Cipher SBox
+// Cipher S-Box
 // ========================================
 
 #if SBOX_USE_DEMO_COMMANDS
@@ -128,6 +132,14 @@ const command_struct command_list[] = {
 
 #if CRC_USE_DEMO_COMMANDS
 	{"crc",				crc::crc16_cmd},
+#endif
+
+// ========================================
+// Tools for Raspberry Pico
+// ========================================
+
+#if COMPONENT_TOOLS_RP
+	{"test",			tools_rp::test_cmd},
 #endif
 
 };

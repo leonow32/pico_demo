@@ -23,18 +23,16 @@ if (EXISTS ${picoVscode})
     include(${picoVscode})
 endif()
 # ====================================================================================
-set(PICO_BOARD pico CACHE STRING "Board type")
+set(PICO_BOARD olimex_rp2350_xxl CACHE STRING "Board type")
 
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
-
 project(rp_ucosmos C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
-
 add_executable(rp_ucosmos 
     "main.cpp" 
 
@@ -47,6 +45,8 @@ add_executable(rp_ucosmos
     
     "crc/crc.cpp"
     "crc/crc_demo.cpp"
+
+    "tools_rp/tools_rp.cpp"
 
     "uCosmos/commands.cpp"
     "uCosmos/console.cpp"
@@ -61,9 +61,15 @@ pico_set_program_version(rp_ucosmos "0.1")
 pico_enable_stdio_uart(rp_ucosmos 1)
 pico_enable_stdio_usb(rp_ucosmos 1)
 
+target_compile_definitions(rp_ucosmos PRIVATE
+    PICO_AUTO_DETECT_PSRAM=1
+#     PICO_PSRAM_CS_PIN=8          # <- wpisz właściwy pin CS (0, 8, 19 lub 47)
+#     PICO_PSRAM_SIZE_BYTES=8*1024*1024
+)
+
 # Add the standard library to the build
 target_link_libraries(rp_ucosmos
-     pico_stdlib
+    pico_stdlib
 )
 
 # Add the standard include files to the build
@@ -74,7 +80,7 @@ target_include_directories(rp_ucosmos PRIVATE
 # Add any user requested libraries
 target_link_libraries(rp_ucosmos 
     hardware_timer
+    hardware_psram            # Tylko RP235x
 )
 
 pico_add_extra_outputs(rp_ucosmos)
-

@@ -14,6 +14,10 @@
     #include "crc/crc.h"
 #endif
 
+#if COMPONENT_TOOLS_RP
+    #include "tools_rp/tools_rp.h"
+#endif
+
 int main() {
     stdio_init_all();
     sleep_ms(250);

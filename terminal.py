@@ -4,7 +4,7 @@ import time
 import serial
 
 running = True
-port_name = sys.argv[1] if len(sys.argv) > 1 else "COM16"
+port_name = sys.argv[1] if len(sys.argv) > 1 else "COM1"
 is_connected = False
 
 while running:
