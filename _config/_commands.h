@@ -51,9 +51,6 @@ const command_struct command_list[] = {
 	{"exe",						task_exe_cmd},
 #endif
 
-	{"reset",					reset_cmd},
-	{"mem",						memory_status_cmd},
-
 #if USE_CMD_TASK_DEMO
 	{"demo1_add",				demo1_add_cmd},
 	{"demo2_add",				demo2_add_cmd},
@@ -89,6 +86,22 @@ const command_struct command_list[] = {
 	{"ascstr",					ascstr_cmd},
 	{"hexstr",					hexstr_cmd},
 	{"ptime",					time_demo_cmd},
+#endif
+
+// ========================================
+// Hardware related
+// ========================================
+
+#if COMPONENT_TOOLS_RP
+	{"reset",					tools_rp::reset_cmd},
+	{"mem",						tools_rp::mem_cmd},
+	{"fcpu",					tools_rp::fcpu_cmd},
+#endif
+
+#if COMPONENT_TOOLS_ESP32
+	{"reset",					tools_rp::reset_cmd},
+	{"mem",						tools_rp::mem_cmd},
+	{"fcpu",					tools_rp::fcpu_cmd},
 #endif
 
 // ========================================
@@ -139,7 +152,7 @@ const command_struct command_list[] = {
 // ========================================
 
 #if COMPONENT_TOOLS_RP
-	{"test",			tools_rp::test_cmd},
+	{"test",			tools_rp::mem_cmd},
 #endif
 
 };

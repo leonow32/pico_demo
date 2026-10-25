@@ -32,6 +32,8 @@ while running:
                         port.write(char)
                     except serial.SerialException:
                         break
+                    except:
+                        pass
 
                 time.sleep(0.005)
 
