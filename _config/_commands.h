@@ -134,18 +134,13 @@ const command_struct command_list[] = {
 // Cipher S-Box
 // ========================================
 
-#if SBOX_USE_DEMO_COMMANDS
-	{"sbox_e",			sbox::encrypt_cmd},
-	{"sbox_d",			sbox::decrypt_cmd},
-#endif
+#include "cipher_sbox/sbox_demo_cmd.h"
 
 // ========================================
 // CRC
 // ========================================
 
-#if CRC_USE_DEMO_COMMANDS
-	{"crc",				crc::crc16_cmd},
-#endif
+#include "crc/crc_demo_cmd.h"
 
 // ========================================
 // Tools for Raspberry Pico
