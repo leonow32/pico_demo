@@ -79,6 +79,7 @@ target_include_directories(rp_ucosmos PRIVATE
 
 # Add any user requested libraries
 target_link_libraries(rp_ucosmos 
+    hardware_irq
     hardware_timer
     hardware_psram            # Tylko RP235x
 )
