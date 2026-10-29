@@ -13,3 +13,6 @@
 [submodule "tools_rp"]
 	path = tools_rp
 	url = git@github.com:leonow32/tools_rp.git
+[submodule "tools_esp32"]
+	path = tools_esp32
+	url = git@github.com:leonow32/tools_esp32.git

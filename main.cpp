@@ -20,10 +20,9 @@
 
 int main() {
     stdio_init_all();
-    sleep_ms(250);
+    sleep_ms(300);
 
     uCosmos_init();
-
 
     uCosmos_scheduler();
 }
