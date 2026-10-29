@@ -10,3 +10,6 @@
 [submodule "cipher_aes128"]
 	path = cipher_aes128
 	url = git@github.com:leonow32/cipher_aes128.git
+[submodule "tools_rp"]
+	path = tools_rp
+	url = git@github.com:leonow32/tools_rp.git
