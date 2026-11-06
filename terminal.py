@@ -3,6 +3,8 @@ import sys
 import time
 import serial
 
+# CTRL-Q closes the program
+
 running = True
 port_name = sys.argv[1] if len(sys.argv) > 1 else "COM1"
 is_connected = False
@@ -10,7 +12,7 @@ is_connected = False
 while running:
     try:
         with serial.Serial(port_name, 115200, timeout=0.1) as port:
-            print(f"=== Port {port_name} otwarty")
+            print(f"=== Port {port_name} open")
             is_connected = True
 
             while running:
@@ -25,7 +27,7 @@ while running:
                 if msvcrt.kbhit():
                     char = msvcrt.getch()
 
-                    if char == b"\x11":  # CTRL-Q zamyka program
+                    if char == b"\x11":
                         running = False
                         break
                     try:
@@ -41,7 +43,7 @@ while running:
         if msvcrt.kbhit():
             char = msvcrt.getch()
 
-            if msvcrt.getch() == b"\x11":  # CTRL-Q zamyka program
+            if msvcrt.getch() == b"\x11":
                 running = False
                 break
 
@@ -49,9 +51,9 @@ while running:
             break
 
         if is_connected:
-            print(f"=== Port {port_name} zamknięty")
+            print(f"=== Port {port_name} closed")
             is_connected = False 
 
         time.sleep(0.01)
 
-print("=== Koniec")
+print("=== End")

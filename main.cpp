@@ -25,4 +25,6 @@ int main() {
     uCosmos_init();
 
     uCosmos_scheduler();
+
+    LOGW("End of main()");
 }
