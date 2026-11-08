@@ -58,7 +58,7 @@ pico_set_program_name(rp_ucosmos "rp_ucosmos")
 pico_set_program_version(rp_ucosmos "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(rp_ucosmos 1)
+pico_enable_stdio_uart(rp_ucosmos 0)
 pico_enable_stdio_usb(rp_ucosmos 1)
 
 target_compile_definitions(rp_ucosmos PRIVATE
