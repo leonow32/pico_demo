@@ -7,10 +7,6 @@
 	#define OS_TASK_MAXCOUNT				uint8_t(10)		// Maximum number of tasks running simultaneously
 	#define OS_TICK_PERIOD_MS				uint16_t(10)	// Period of the system timer in ms, range 1-1000
 	#define OS_SHOW_SPLASH_SCREEN_AT_START	true			// Should the system logo be displayed at startup?
-
-	// Diagnostic tools for measuring task times
-	#define DIAG_USE						true
-	#define DIAG_COUNT						20
 	
 	// Console config
 	#define CONSOLE_USE						true
@@ -28,6 +24,10 @@
 	#define USE_CMD_TASK_COMMANDS			true			// Commands for manual task management
 	#define USE_CMD_PARSE_DEMO				true			// Demo of argument parsers
 	#define USE_CMD_TASK_DEMO				true			// Demo of tasks
+
+	// Diagnostic tools for measuring task times
+	#define DIAG_USE						true
+	#define DIAG_COUNT						20				// Maximum number of tasks to be tracked
 
 	#define OS_CONFIG_DONE
 #endif
