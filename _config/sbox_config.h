@@ -1,6 +1,8 @@
 #ifndef SBOX_CONFIG_H_
 #define SBOX_CONFIG_H_
 
+#define SBOX_CONFIG_VERSION				261116
+
 #if PRODUCT_DEMO
 
     constexpr uint8_t key_a[256] = { 
