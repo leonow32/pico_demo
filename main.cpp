@@ -46,7 +46,7 @@ void hello_task(run_mode_t run_mode) {
     
     if(run_mode == os_run) {
         if(counter < 5) {
-            LOGI("Hello %d", counter++);
+            LOGW("Hello %d", counter++);
         }
         else {
             task_remove(hello_task);
@@ -80,7 +80,7 @@ int main() {
 	// task_add(sleep_200ms_task, 5);
 	// task_add(sleep_500ms_task, 2);
 
-	// task_add(hello_task, 1000);
+	task_add(hello_task, 1000);
 
 	uCosmos_scheduler();
 
