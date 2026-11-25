@@ -64,6 +64,42 @@ void hello_task(run_mode_t run_mode) {
     }
 }
 
+void clock_task(run_mode_t run_mode) {
+	switch(run_mode) {
+		case os_run:
+			sleep_ms(1);
+			break;
+
+		case os_id:
+			task_name = __func__;
+			break;
+	}
+}
+
+void display_task(run_mode_t run_mode) {
+	switch(run_mode) {
+		case os_run:
+			sleep_ms(3);
+			break;
+
+		case os_id:
+			task_name = __func__;
+			break;
+	}
+}
+
+void sensor_task(run_mode_t run_mode) {
+	switch(run_mode) {
+		case os_run:
+			sleep_ms(50);
+			break;
+
+		case os_id:
+			task_name = __func__;
+			break;
+	}
+}  
+
 int main() {
 	stdio_init_all();
 	sleep_ms(300);
@@ -81,6 +117,9 @@ int main() {
 	// task_add(sleep_500ms_task, 2);
 
 	task_add(hello_task, 1000);
+	task_add(clock_task, 10000);
+	task_add(display_task, 20);
+	task_add(sensor_task, 100);
 
 	uCosmos_scheduler();
 
