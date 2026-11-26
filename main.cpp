@@ -106,6 +106,11 @@ int main() {
 
 	uCosmos_init();
 
+	LOGE("Error (red)");
+	LOGW("Warning (yellow)");
+	LOGI("Information (green)");
+	LOGD("Debug (white)");
+
 	// task_add(sleep_1ms_task,   1000);
 	// task_add(sleep_2ms_task,   500);
 	// task_add(sleep_5ms_task,   200);
