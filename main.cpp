@@ -121,6 +121,16 @@ int main() {
 	task_add(display_task, 20);
 	task_add(sensor_task, 100);
 
+	ExecutionTimer timer1 = ExecutionTimer();
+	sleep_ms(10);
+	timer1.end();
+	uint64_t result = timer1.get();
+	printf("Execution timer: %llu ms\n", result / 1000);
+
+	ExecutionTimer timer2 = ExecutionTimer();
+	sleep_ms(10);
+	timer2.print("Execution timer");
+
 	uCosmos_scheduler();
 
 	LOGW("End of main()");
