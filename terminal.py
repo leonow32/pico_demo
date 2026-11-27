@@ -43,7 +43,7 @@ while running:
         if msvcrt.kbhit():
             char = msvcrt.getch()
 
-            if msvcrt.getch() == b"\x11":
+            if char == b"\x11":
                 running = False
                 break
 
